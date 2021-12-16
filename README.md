@@ -1,63 +1,105 @@
-# CodeIgniter 4 Application Starter
+# Projeto Mind Consulting
 
-## What is CodeIgniter?
+Projeto visava as seguintes diretrizes:
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](http://codeigniter.com).
+● Requisitos não funcionais
+○ É necessário utilizar umas das seguintes tecnologias :
+■ Javascript utilizando React ou React Native para frontend e com 
+Node.js para o backend;
+■ PHP utilizando um dos frameworks: Codeigniter ou Laravel;
+○ As senhas devem ser criptografadas utilizando BCrypt;
+○ O banco de dados pode ser relacional ou não relacional, sendo de escolha 
+livre do candidato;
+○ O projeto deve ser web ou mobile;
+● Requisitos funcionais
+○ Cadastro
+■ O sistema deve permitir o auto-cadastro de usuários comuns
+■ através de um formulário simples e intuitivo.
+■ Entradas:
+● - Nome completo
+● - CPF
+● - E-mail
+● - Senha
+● - Imagem de perfil
+● Login
+○ O sistema deve realizar o gerenciamento através de uma tela de login, 
+permitindo o acesso de usuários que possuam credenciais de e-mail e senha 
+válidos para um dashboard.
+○ O sistema deve ser dividido em duas visões diferentes:
+■ administrador: deve ter nível de acesso 999
+■ usuário comum. deve ter o nível de acesso 1
+■ usuário desativado: deve ter o nível de acesso 0 e não poderá acessar 
+a plataforma de forma alguma.
+○ Entradas:
+■ E-mail ou CPF
+■ Senha
+● Dashboard Usuário Admin
+○ O sistema deverá possuir na visão administrador um dashboard com uma 
+tabela listando todos os usuários salvos no sistema. Nesta tabela deverão ser 
+exibidas todas as informações e os botões de ação para o administrador 
+poder editar e desativar qualquer usuário.
+○ Features:
+■ Tabela para listar todos os usuários
+■ Botão de ação para editar um usuário
+■ Botão de ação para ativar/desativar um usuário
+● Dashboard Usuário Comum
+○ O sistema deverá incluir a visão de usuários comuns um dashboard com apenas 
+as informações de seu perfil e a opção para editar todos seus próprios dados.
+○ Features:
+■ Tela de perfil para exibir todos os dados do usuário
+■ Tela para edição dos dados
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+## Até o presente momento:
+# Telas criadas:
+- Login
+- Cadastro
+- Dashboard tanto de um usuário comum quanto a de um usuário administrador
+- Tela de atualização de cadastro
+- Tela de erro se acaso o usuário digitar na tela de login algo errado (a tela tem um link que o redireciona para a tela de Login)
 
-More information about the plans for version 4 can be found in [the announcement](http://forum.codeigniter.com/thread-62615.html) on the forums.
+# Tecnologia escolhida:
+O projeto contou com o framework CodeIgniter na versão mais recente disponível em Dezembro de 2021 (v.4)
+As telas foram desenvolvidas utilizando Bootstrap v.5
 
-The user guide corresponding to this version of the framework can be found
-[here](https://codeigniter4.github.io/userguide/).
+#Soluções implatadas:
+- usuário consegue fazer login no sistema com email e senha
+- o dashboard do usuario comum mostra seus dados, inclusive na hora de fazer alguma alteração
+- o dashboard do administrador mostra seus dados e o de outros usuários, permitindo também fazer alterações tanto no seu perfil quanto dos outros usuarios
 
-## Installation & updates
+#Soluções pendentes:
+- Tratamento dos inputs, como número máximo de caracteres do CPF
+- Salvar imagem 
+- Carregar imagem do usuário em tela
+- Função de excluir usuário
+- A seleção de tipo de usuário deveria ficar apenas para os administradores
 
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
+#Observações:
+- O arquivo de script do BD criado para projeto se encontra na pasta Script BD
 
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
+#Links Utilizados para consulta:
+Realizar o upload de imagem
+[https://codeigniter.com/user_guide/libraries/uploaded_files.html#single-file]
 
-## Setup
+Documentação do boostrap
+[https://getbootstrap.com/docs/5.1]
 
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
+Documentação oficial do CodeIgniter
+[https://codeigniter.com/user_guide/tutorial/index.html]
 
-## Important Change with index.php
+Controle de Sessão 
+[https://codeigniter.com/user_guide/libraries/sessions.html?highlight=session]
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+Rota
+[https://codeigniter.com/user_guide/incoming/routing.html]
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+Controller
+[https://codeigniter.com/user_guide/incoming/controllers.html]
 
-**Please** read the user guide for a better explanation of how CI4 works!
+Model
+[https://codeigniter.com/user_guide/models/model.html]
 
-## Repository Management
+CRUD com codeigniter
+[https://www.positronx.io/codeigniter-crud-with-bootstrap-and-mysql-example/]
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
 
-## Server Requirements
-
-PHP version 7.3 or higher is required, with the following extensions installed:
-
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
-
-Additionally, make sure that the following extensions are enabled in your PHP:
-
-- json (enabled by default - don't turn it off)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php)
-- xml (enabled by default - don't turn it off)
